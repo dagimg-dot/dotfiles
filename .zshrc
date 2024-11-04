@@ -13,11 +13,14 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH":"$HOME/.local/bin"
 export PATH="$PATH":"$HOME/.cargo/bin"
 
+open() {
+    (nohup nautilus -w "$1" > /dev/null 2>&1 & disown) >/dev/null 2>&1
+}
+
 # Aliases
 
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
-alias hib="kitty"
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias cd="z"
 alias mk="mkdir"
 alias dp="rm -rf"
@@ -25,13 +28,14 @@ alias ff="fd --type f --exclude node_modules --exclude Lib | fzf --preview 'bat 
 alias p="cd /home/jd/JDrive/Projects"
 alias i="cd .."
 alias j="clear -x"
-alias al="nautilus ."
 alias dl="yt-dlp"
 alias gs="git switch"
 alias gb="git checkout -b"
 alias gsp="git stash apply"
 alias gsl="git stash list"
 alias gc="git commit"
+alias gbk="git branch -D"
+alias lg="lazygit"
 alias ss="scrcpy"
 alias f="cd -"
 alias r="cd"
@@ -41,6 +45,8 @@ alias ls="eza"
 alias v="nvim"
 alias dev="ssh lix@192.168.124.167"
 alias win="ssh admin@192.168.124.60"
+alias denc="$HOME/JDrive/Projects/BASH/enc.sh"
+alias dkd="docker compose down"
 
 # initialize autocompletion
 autoload -U compinit && compinit
@@ -58,12 +64,13 @@ eval "$(zoxide init zsh)"
 eval "$(ssh-agent -s)" >/dev/null 2>&1
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/fzf/shell/key-bindings.zsh
 source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $HOME/JDrive/Projects/BASH/popener.sh
 source $HOME/JDrive/Projects/BASH/dent.sh
 source $HOME/JDrive/Projects/BASH/toggle_encfs.sh
+source $HOME/JDrive/Projects/BASH/saved_pass.sh
 # -- Use fd instead of fzf --
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -138,9 +145,6 @@ esac
 # pnpm end
 source "$HOME/.rye/env"
 
-
-# Custom Functions
-
 # Function to change directory inside the current directory
 fk() {
   local dir=$(fd --type d --exclude node_modules --exclude Lib | fzf --no-multi)
@@ -148,7 +152,6 @@ fk() {
     cd "$dir"
   fi
 }
-
 
 function cursor() {
     /home/jd/AppImages/cursor.appimage </dev/null &>/dev/null $1 &
@@ -159,7 +162,7 @@ export XDG_DATA_DIRS="$XDG_DATA_DIRS:/home/jd/Personal/.local/share/flatpak/expo
 alias ld=lazydocker
 alias po=poetry
 alias zz=7zz
-alias tt='date +"%b %-d %Y"'
+alias tt='date "+%b %d %Y %H:%M"'
 
 export PATH=$PATH:/home/jd/.spicetify
 
