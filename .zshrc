@@ -33,6 +33,7 @@ alias gs="git switch"
 alias gb="git checkout -b"
 alias gsp="git stash apply"
 alias gsl="git stash list"
+alias gss="git stash push -m"
 alias gc="git commit"
 alias gbk="git branch -D"
 alias lg="lazygit"
@@ -168,3 +169,7 @@ export PATH=$PATH:/home/jd/.spicetify
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# Bindings
+
+bindkey '^H' backward-delete-word
