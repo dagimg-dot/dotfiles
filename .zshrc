@@ -44,6 +44,22 @@ alias tt='date "+%b %d %Y %H:%M"'
 alias dev="ssh lix@192.168.124.167"
 alias win="ssh admin@192.168.124.60"
 
+# Custom Functions
+fk() {
+  local dir=$(fd --type d --exclude node_modules --exclude Lib | fzf --no-multi)
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  fi
+}
+
+function cursor() {
+    /home/jd/AppImages/cursor.appimage </dev/null &>/dev/null $1 &
+}
+
+open() {
+    (nohup nautilus -w "$1" > /dev/null 2>&1 & disown) >/dev/null 2>&1
+}
+
 # Evals
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
