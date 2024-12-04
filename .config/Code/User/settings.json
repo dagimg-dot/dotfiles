@@ -1,0 +1,146 @@
+{
+  "window.menuBarVisibility": "toggle",
+  "redhat.telemetry.enabled": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "workbench.colorTheme": "Tokyo Night",
+  "editor.minimap.enabled": false,
+  "editor.fontFamily": "'','JetBrains Mono', 'monospace', monospace",
+  "editor.lineNumbers": "relative",
+  "workbench.iconTheme": "material-icon-theme",
+  "cmake.showOptionsMovedNotification": false,
+  "cmake.configureOnOpen": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false,
+    "python": false
+  },
+  "terminal.integrated.fontFamily": "JetBrainsMonoNL Nerd Font Propo",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "*.css": "css"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim.bak/init.lua",
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "gitlens.launchpad.indicator.enabled": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "workbench.sideBar.location": "right",
+  "[dockercompose]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "window.dialogStyle": "custom",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "michelemelluso.code-beautifier"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "editor.fontSize": 13,
+  "update.mode": "manual",
+  "leetcode.endpoint": "leetcode",
+  "workbench.editorAssociations": {
+    "*.pyc": "hexEditor.hexedit"
+  },
+  "leetcode.workspaceFolder": "/home/jd/JDrive/Projects/CommunityA2SV",
+  "leetcode.hint.configWebviewMarkdown": false,
+  "leetcode.hint.commandShortcut": false,
+  "leetcode.defaultLanguage": "python3",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "supermaven.enable": {
+    "vue": true,
+    "*": true
+  },
+  "dev.containers.mountWaylandSocket": false,
+  "files.autoSave": "afterDelay",
+  "[sql]": {
+    "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "zenMode.hideLineNumbers": false,
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask"
+  ],
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "window.titleBarStyle": "custom",
+  "vscode_custom_css.imports": [
+    "file:///home/jd/.config/Code/User/mod.css"
+  ],
+  "window.restoreFullscreen": true,
+  "zenMode.restore": false,
+  "window.experimentalControlOverlay": false,
+  "workbench.colorCustomizations": {},
+  "editor.tokenColorCustomizations": {
+    "textMateRules": []
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "yaml.schemas": {
+    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.0.14/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "atlascode.jira.jqlList": [
+    {
+      "id": "8d0f5bdc-e0e4-4dd5-8fcf-d6acd0918074",
+      "enabled": true,
+      "name": "My yendriyas Issues",
+      "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+      "siteId": "8da6c351-b8e6-4203-a804-1bc14620e154",
+      "monitor": true
+    },
+    {
+      "id": "9c2aec9c-6c24-4778-a5c9-c0fd4dc961d9",
+      "siteId": "8da6c351-b8e6-4203-a804-1bc14620e154",
+      "name": "Unfinished Issues",
+      "query": "assignee = currentUser() AND status != \"READy to test\"  AND resolution = Unresolved ORDER BY lastViewed DESC ",
+      "enabled": true,
+      "monitor": true
+    }
+  ],
+  "workbench.activityBar.location": "hidden",
+  "atlascode.bitbucket.enabled": false,
+  "haskell.manageHLS": "GHCup",
+  "window.customTitleBarVisibility": "auto",
+  "i18n-ally.displayLanguage": "en",
+  "editor.fontLigatures": true,
+}
