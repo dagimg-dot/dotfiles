@@ -84,7 +84,7 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/fzf/shell/key-bindings.zsh
 source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $HOME/dotfiles/scripts/BASH/popener.sh
-source $HOME/dotfiles/scriptsBASH/dent.sh
+source $HOME/dotfiles/scripts/BASH/dent.sh
 source $HOME/dotfiles/scripts/BASH/toggle_encfs.sh
 source $HOME/dotfiles/scripts/BASH/saved_pass.sh
 
