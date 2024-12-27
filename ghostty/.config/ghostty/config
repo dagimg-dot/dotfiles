@@ -1,0 +1,13 @@
+command = tmux
+
+gtk-titlebar = false
+theme = tokyonight
+
+window-decoration = false
+
+window-width = 124
+window-height = 30
+
+window-padding-x = 5
+window-padding-y = 3
+

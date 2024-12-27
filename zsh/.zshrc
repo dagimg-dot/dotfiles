@@ -43,6 +43,7 @@ alias zz=7zz
 alias tt='date "+%b %d %Y %H:%M"'
 alias dev="ssh lix@192.168.124.167"
 alias win="ssh admin@192.168.124.60"
+alias chx="chmod +x"
 
 # Custom Functions
 fk() {
@@ -60,13 +61,13 @@ open() {
     (nohup nautilus -w "$1" > /dev/null 2>&1 & disown) >/dev/null 2>&1
 }
 
-# Evals
+# # Evals
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(ssh-agent -s)" >/dev/null 2>&1
 
 # Initialize Autocompletion
-autoload -U compinit && compinit
+# autoload -U compinit && compinit
 
 # History Setup
 setopt SHARE_HISTORY
@@ -78,6 +79,8 @@ setopt HIST_EXPIRE_DUPS_FIRST
 # Sources
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+# source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source /usr/share/fzf/shell/key-bindings.zsh
 source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $HOME/JDrive/Projects/BASH/popener.sh
@@ -172,3 +175,11 @@ source "$HOME/.rye/env"
 
 # Deno
 . "/home/jd/.deno/env"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"

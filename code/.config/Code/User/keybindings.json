@@ -246,11 +246,6 @@
         "when": "editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
     },
     {
-        "key": "ctrl+w v",
-        "command": "-workbench.action.splitEditorRight",
-        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
-    },
-    {
         "key": "shift+alt+,",
         "command": "-gitlens.diffLineWithPrevious",
         "when": "editorTextFocus && config.gitlens.keymap == 'alternate' && resource in 'gitlens:tabs:tracked'"
@@ -308,5 +303,38 @@
     {
         "key": "ctrl+alt+\\",
         "command": "workbench.action.decreaseViewSize"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-extension.vim_ctrl+c",
+        "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "-extension.vim_ctrl+s",
+        "when": "editorTextFocus && vim.active && vim.use<C-s> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "-extension.vim_ctrl+x",
+        "when": "editorTextFocus && vim.active && vim.use<C-x> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+y",
+        "command": "-extension.vim_ctrl+y",
+        "when": "editorTextFocus && vim.active && vim.use<C-y> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-supermaven.editWithSupermaven"
+    },
+    {
+        "key": "ctrl+shift+i ctrl",
+        "command": "extension.formatRsxDocument"
     }
 ]

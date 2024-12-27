@@ -19,7 +19,9 @@
     "plaintext": false,
     "markdown": true,
     "scminput": false,
-    "python": false
+    "python": true,
+    "vue": true,
+    "astro": true
   },
   "terminal.integrated.fontFamily": "JetBrainsMonoNL Nerd Font Propo",
   "[typescriptreact]": {
@@ -75,7 +77,7 @@
   },
   "supermaven.enable": {
     "vue": true,
-    "*": true
+    "*": false
   },
   "dev.containers.mountWaylandSocket": false,
   "files.autoSave": "afterDelay",
@@ -117,7 +119,7 @@
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   "yaml.schemas": {
-    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.0.14/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.2.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "atlascode.jira.jqlList": [
     {
@@ -137,10 +139,38 @@
       "monitor": true
     }
   ],
-  "workbench.activityBar.location": "hidden",
   "atlascode.bitbucket.enabled": false,
   "haskell.manageHLS": "GHCup",
   "window.customTitleBarVisibility": "auto",
   "i18n-ally.displayLanguage": "en",
   "editor.fontLigatures": true,
+  "vim.overrideCopy": false,
+  "vim.easymotion": true,
+  "vim.vimrc.path": "$HOME/.vimrc",
+  "vim.vimrc.enable": true,
+  "vim.useCtrlKeys": false,
+  "database-client.autoSync": true,
+  "sqltools.useNodeRuntime": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "pubspec.yaml": "pubspec.lock,pubspec_overrides.yaml,.packages,.flutter-plugins,.flutter-plugins-dependencies,.metadata",
+    "*.dart": "${capture}.g.dart",
+    "Cargo.toml": "Cargo.lock",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
+  },
+  "zenMode.centerLayout": false,
+  "editor.bracketPairColorization.enabled": false,
+  "workbench.activityBar.location": "hidden",
+  "supermaven.otherWarning": false,
+  "vue.server.hybridMode": true,
 }
