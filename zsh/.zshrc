@@ -83,10 +83,10 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source /usr/share/fzf/shell/key-bindings.zsh
 source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
-source $HOME/JDrive/Projects/BASH/popener.sh
-source $HOME/JDrive/Projects/BASH/dent.sh
-source $HOME/JDrive/Projects/BASH/toggle_encfs.sh
-source $HOME/JDrive/Projects/BASH/saved_pass.sh
+source $HOME/dotfiles/scripts/BASH/popener.sh
+source $HOME/dotfiles/scriptsBASH/dent.sh
+source $HOME/dotfiles/scripts/BASH/toggle_encfs.sh
+source $HOME/dotfiles/scripts/BASH/saved_pass.sh
 
 # Exports
 export PATH="$PATH:$HOME/Apps/flutter/bin"
