@@ -65,6 +65,7 @@ open() {
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(ssh-agent -s)" >/dev/null 2>&1
+eval "$(atuin init zsh)"
 
 # Initialize Autocompletion
 # autoload -U compinit && compinit
@@ -102,6 +103,7 @@ export ANDROID_AVD_HOME=~/.android/avd
 export ANDROID_HOME=~/Android/Sdk
 export BAT_THEME=tokyonight_night
 export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
+export ATUIN_CONFIG_DIR="$HOME/dotfiles/atuin/.config/atuin"
 
 ############################################################################################################################3
 
@@ -182,4 +184,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 . "$HOME/.atuin/bin/env"
 
-eval "$(atuin init zsh)"
+
+bindkey '^H' backward-kill-word
