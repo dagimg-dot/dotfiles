@@ -150,7 +150,6 @@
   "vim.vimrc.enable": true,
   "vim.useCtrlKeys": false,
   "database-client.autoSync": true,
-  "sqltools.useNodeRuntime": true,
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.js",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",

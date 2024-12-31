@@ -61,11 +61,10 @@ open() {
     (nohup nautilus -w "$1" > /dev/null 2>&1 & disown) >/dev/null 2>&1
 }
 
-# # Evals
+# Evals
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(ssh-agent -s)" >/dev/null 2>&1
-eval "$(atuin init zsh)"
 
 # Initialize Autocompletion
 # autoload -U compinit && compinit
@@ -166,14 +165,11 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# Rye
-source "$HOME/.rye/env"
-
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Haskell
-[ -f "/home/jd/.ghcup/env" ] && . "/home/jd/.ghcup/env" # ghcup-env
+# [ -f "/home/jd/.ghcup/env" ] && . "/home/jd/.ghcup/env" # ghcup-env
 
 # Deno
 . "/home/jd/.deno/env"
@@ -184,5 +180,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 . "$HOME/.atuin/bin/env"
 
+eval "$(atuin init zsh)"
 
-bindkey '^H' backward-kill-word
