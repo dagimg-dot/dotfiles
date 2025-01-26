@@ -10,6 +10,6 @@ return {
       disable_italics = true, -- Disable italics if you want
     })
 
-    vim.cmd([[colorscheme poimandres]])
+    vim.cmd([[colorscheme tokyonight-night]])
   end,
 }
