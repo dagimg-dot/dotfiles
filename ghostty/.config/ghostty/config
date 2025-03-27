@@ -2,8 +2,12 @@ command = tmux
 
 gtk-titlebar = false
 theme = tokyonight
+# font-family = SourceCode Pro
+font-family = MonaspaceNe
 
-window-decoration = false
+window-decoration = auto
+gtk-single-instance = true
+
 
 window-width = 124
 window-height = 30
@@ -18,5 +22,5 @@ font-feature = -liga
 
 # https://www.gnu.org/software/bash/manual/html_node/Commands-For-Killing.html
 # kill-line (C-k)
-keybind = ctrl+delete=text:\x0b
+keybind = ctrl+delete=esc:d
 

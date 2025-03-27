@@ -4,18 +4,16 @@
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
-  "workbench.colorTheme": "Tokyo Night",
   "editor.minimap.enabled": false,
-  "editor.fontFamily": "'','JetBrains Mono', 'monospace', monospace",
+  "editor.fontFamily": "'MonaspiceNe Nerd Font','Source Code Pro','JetBrains Mono', 'monospace', monospace",
   "editor.lineNumbers": "relative",
-  "workbench.iconTheme": "material-icon-theme",
   "cmake.showOptionsMovedNotification": false,
   "cmake.configureOnOpen": false,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
     "plaintext": false,
     "markdown": true,
     "scminput": false,
@@ -23,7 +21,6 @@
     "vue": true,
     "astro": true
   },
-  "terminal.integrated.fontFamily": "JetBrainsMonoNL Nerd Font Propo",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -36,7 +33,7 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim.bak/init.lua",
+  "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim_vs/init.lua",
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
   },
@@ -47,7 +44,7 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "workbench.sideBar.location": "right",
   "[dockercompose]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "window.dialogStyle": "custom",
   "[jsonc]": {
@@ -60,7 +57,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "editor.fontSize": 13,
   "update.mode": "manual",
@@ -68,7 +65,7 @@
   "workbench.editorAssociations": {
     "*.pyc": "hexEditor.hexedit"
   },
-  "leetcode.workspaceFolder": "/home/jd/JDrive/Projects/CommunityA2SV",
+  "leetcode.workspaceFolder": "/home/jd/JDrive/Projects/aremote/problems",
   "leetcode.hint.configWebviewMarkdown": false,
   "leetcode.hint.commandShortcut": false,
   "leetcode.defaultLanguage": "python3",
@@ -80,7 +77,6 @@
     "*": false
   },
   "dev.containers.mountWaylandSocket": false,
-  "files.autoSave": "afterDelay",
   "[sql]": {
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
   },
@@ -101,7 +97,6 @@
   },
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
-  "window.titleBarStyle": "custom",
   "vscode_custom_css.imports": [
     "file:///home/jd/.config/Code/User/mod.css"
   ],
@@ -115,11 +110,8 @@
   "[cpp]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
   "yaml.schemas": {
-    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.2.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.4.14/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "atlascode.jira.jqlList": [
     {
@@ -141,7 +133,6 @@
   ],
   "atlascode.bitbucket.enabled": false,
   "haskell.manageHLS": "GHCup",
-  "window.customTitleBarVisibility": "auto",
   "i18n-ally.displayLanguage": "en",
   "editor.fontLigatures": true,
   "vim.overrideCopy": false,
@@ -169,7 +160,19 @@
   },
   "zenMode.centerLayout": false,
   "editor.bracketPairColorization.enabled": false,
-  "workbench.activityBar.location": "hidden",
   "supermaven.otherWarning": false,
   "vue.server.hybridMode": true,
+  "makefile.configureOnOpen": true,
+  "files.autoSave": "afterDelay",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "terminal.integrated.fontLigatures": true,
+  "workbench.colorTheme": "Borderless Tokyo Night",
+  "leetcode.hint.commentDescription": false,
+  "cph.general.defaultLanguage": "python",
+  "cph.general.hideStderrorWhenCompiledOK": false,
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "workbench.iconTheme": "material-icon-theme",
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
 }

@@ -6,6 +6,17 @@ function fj -d "open a project in vs code"
     end
 end
 
+function cursor
+    nohup /home/jd/AppImages/cursor.appimage $argv >/dev/null 2>&1 &
+end
+
+function fk
+    set dir (fd --type d --exclude node_modules --exclude Lib | fzf --no-multi)
+    if test -n "$dir"
+        cd "$dir"
+    end
+end
+
 function fw -d "open workspace in vscode"
     p
     set selected_workspace (fd --type f --extension code-workspace | fzf --exit-0)
@@ -18,7 +29,7 @@ function dent -d "login to a running docker container"
     set container (docker ps --format "table {{.ID}}\t{{.Names}}" | fzf --header="Select a running container")
     if test -n "$container"
         set container_id (echo $container | awk '{print $1}')
-        docker exec -it "$container_id" /bin/sh
+        docker exec -it "$container_id" bash
     else
         echo "No container selected."
     end
@@ -103,5 +114,29 @@ function enc -d "encrypt and decrypt journal"
 end
 
 function open -d "open a directory in nautilus"
-    nohup nautilus -w "$argv" > /dev/null 2>&1 & disown
+    nohup nautilus -w "$argv" >/dev/null 2>&1 & disown
+end
+
+function cop --description "Run a command, pick an item with fzf, and copy it to the clipboard"
+    # Check if a command was provided
+    if test (count $argv) -eq 0
+        echo "Usage: cop '<command>'"
+        return 1
+    end
+
+    # Execute the command and pipe its output to fzf
+    set selected_item (eval $argv | fzf)
+
+    # If an item was selected, copy it to the clipboard
+    if test -n "$selected_item"
+        if type -q wl-copy
+            echo -n $selected_item | wl-copy
+        else
+            echo "No clipboard utility found (wl-copy)."
+            return 1
+        end
+        echo "Copied to clipboard: $selected_item"
+    else
+        echo "No selection made."
+    end
 end

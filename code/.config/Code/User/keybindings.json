@@ -336,5 +336,15 @@
     {
         "key": "ctrl+shift+i ctrl",
         "command": "extension.formatRsxDocument"
+    },
+    {
+        "key": "shift+alt+2",
+        "command": "editor.action.marker.next",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+f8",
+        "command": "-editor.action.marker.next",
+        "when": "editorFocus"
     }
 ]
