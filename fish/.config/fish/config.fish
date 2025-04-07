@@ -106,3 +106,7 @@ uv generate-shell-completion fish | source
 bind -M visual y fish_clipboard_copy
 bind -M normal yy fish_clipboard_copy
 bind p fish_clipboard_paste
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
