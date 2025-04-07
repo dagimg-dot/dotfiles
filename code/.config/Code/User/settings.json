@@ -111,7 +111,7 @@
     "editor.defaultFormatter": "xaver.clang-format"
   },
   "yaml.schemas": {
-    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.4.14/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.4.22/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "atlascode.jira.jqlList": [
     {
@@ -166,7 +166,7 @@
   "files.autoSave": "afterDelay",
   "editor.gotoLocation.multipleDefinitions": "goto",
   "terminal.integrated.fontLigatures": true,
-  "workbench.colorTheme": "Borderless Tokyo Night",
+  "workbench.colorTheme": "Tokyo Night",
   "leetcode.hint.commentDescription": false,
   "cph.general.defaultLanguage": "python",
   "cph.general.hideStderrorWhenCompiledOK": false,
@@ -175,4 +175,6 @@
   "[c]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
+  "mesonbuild.downloadLanguageServer": true,
+  "go.toolsManagement.autoUpdate": true,
 }
