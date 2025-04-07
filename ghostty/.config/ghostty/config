@@ -4,6 +4,7 @@ gtk-titlebar = false
 theme = tokyonight
 # font-family = SourceCode Pro
 font-family = MonaspaceNe
+font-size = 11
 
 window-decoration = auto
 gtk-single-instance = true
