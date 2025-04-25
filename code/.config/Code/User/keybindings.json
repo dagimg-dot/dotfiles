@@ -221,26 +221,6 @@
         "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
     },
     {
-        "key": "alt+t",
-        "command": "leetcode.testSolution"
-    },
-    {
-        "key": "alt+i",
-        "command": "leetcode.submitSolution"
-    },
-    {
-        "key": "alt+e",
-        "command": "leetcode.showSolution"
-    },
-    {
-        "key": "ctrl+shift+'",
-        "command": "supermaven.addToChat"
-    },
-    {
-        "key": "ctrl+shift+i",
-        "command": "-supermaven.addToChat"
-    },
-    {
         "key": "ctrl+alt+9",
         "command": "workbench.action.splitEditorRight",
         "when": "editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
@@ -346,5 +326,45 @@
         "key": "alt+f8",
         "command": "-editor.action.marker.next",
         "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "notebook.cell.execute",
+        "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
+    },
+    {
+        "key": "meta+enter",
+        "command": "-notebook.cell.execute",
+        "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
+    },
+    {
+        "key": "alt+enter",
+        "command": "notebook.cell.insertCodeCellBelow",
+        "when": "notebookCellListFocused && !inputFocus && notebookChatOuterFocusPosition == ''"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-notebook.cell.insertCodeCellBelow",
+        "when": "notebookCellListFocused && !inputFocus && notebookChatOuterFocusPosition == ''"
+    },
+    {
+        "key": "shift+alt+d",
+        "command": "notebook.cell.delete",
+        "when": "notebookEditorFocused"
+    },
+    {
+        "key": "d d",
+        "command": "-notebook.cell.delete",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-extension.printDir",
+        "when": "editorTextFocus && editorLangId == 'python'"
+    },
+    {
+        "key": "delete",
+        "command": "-notebook.cell.delete",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
     }
 ]

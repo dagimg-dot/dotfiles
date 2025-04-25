@@ -7,7 +7,15 @@ function fj -d "open a project in vs code"
 end
 
 function cursor
-    nohup /home/jd/AppImages/cursor.appimage $argv >/dev/null 2>&1 &
+    /home/jd/AppImages/cursor.appimage $argv
+end
+
+function jf -d "open a project in cursor"
+    p
+    set selected_directory (fd --type d --exclude node_modules --exclude Lib | fzf --exit-0)
+    if test -n "$selected_directory"
+        cursor "$selected_directory"
+    end
 end
 
 function fk

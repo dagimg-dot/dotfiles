@@ -17,7 +17,7 @@
     "plaintext": false,
     "markdown": true,
     "scminput": false,
-    "python": true,
+    "python": false,
     "vue": true,
     "astro": true
   },
@@ -111,7 +111,7 @@
     "editor.defaultFormatter": "xaver.clang-format"
   },
   "yaml.schemas": {
-    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.4.22/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.6.0/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "atlascode.jira.jqlList": [
     {

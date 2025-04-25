@@ -5,7 +5,6 @@ set fish_greeting
 starship init fish | source
 atuin init fish | source
 zoxide init fish | source
-#zoxide init --cmd cd fish | source
 eval (ssh-agent -c) >/dev/null 2>&1
 fnm env --use-on-cd --shell fish | source
 
@@ -15,7 +14,6 @@ fish_vi_key_bindings
 # Custom
 source $__fish_config_dir/custom/functions.fish
 
-# Exports
 set -g __sdkman_custom_dir ~/.sdkman
 set -x CHROME_EXECUTABLE /var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin/com.google.Chrome
 set -x EDGE_PATH /var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin/com.google.Chrome
@@ -34,7 +32,7 @@ set -x ANDROID_HOME ~/Android/Sdk
 set -x ZSH_CUSTOM $HOME/.oh-my-zsh/custom
 set -x ATUIN_CONFIG_DIR $HOME/dotfiles/atuin/.config/atuin
 set -Ux EDITOR nvim
-
+set -x PATH $PATH $HOME/.eget/bin
 
 # Aliases
 alias zshconfig="nvim ~/.zshrc"
@@ -60,7 +58,9 @@ alias gsa="git stash -u"
 alias gso="git stash pop"
 alias gsl="git stash list"
 alias gss="git stash push -m"
-alias gm="git commit"
+alias gm="git commit -m"
+alias gp="git push"
+alias gl="git pull"
 alias lg="lazygit"
 alias ss="scrcpy"
 alias f="cd -"
@@ -72,7 +72,6 @@ alias vi="nvim"
 alias denc="$HOME/JDrive/Projects/BASH/enc.sh"
 alias dkd="docker compose down"
 alias ld=lazydocker
-alias po=poetry
 alias zz=7zz
 alias tt='date "+%b %d %Y %H:%M"'
 alias dev="ssh lix@192.168.124.167"
@@ -84,10 +83,8 @@ alias pi="wl-copy"
 
 # Abberviations
 
-abbr pd 'pnpm run dev'
 abbr ge 'git merge'
 abbr bd 'git branch -D'
-abbr ch chezmoi
 
 # pnpm
 set -gx PNPM_HOME "/home/jd/.local/share"
