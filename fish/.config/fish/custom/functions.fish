@@ -43,6 +43,14 @@ function dent -d "login to a running docker container"
     end
 end
 
+function g --wraps='git' --description="run either `git <argv>` or `git status`"
+    if test 0 -eq (count $argv)
+        git status --short --branch
+    else
+        git $argv
+    end
+end
+
 function pas -d "show password for saved wifi"
     # Select a WiFi connection using fzf
     set selected_wifi (nmcli connection show | grep wifi | fzf --prompt="Select WiFi: ")
