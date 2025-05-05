@@ -74,12 +74,13 @@ alias dkd="docker compose down"
 alias ld=lazydocker
 alias zz=7zz
 alias tt='date "+%b %d %Y %H:%M"'
-alias dev="ssh lix@192.168.124.167"
+alias dev="ssh jd@192.168.122.155"
 alias win="ssh admin@192.168.124.60"
 alias chx="chmod +x"
 alias grep="rg"
 alias find="fd"
-alias pi="wl-copy"
+alias cb="wl-copy"
+alias fl="yazi"
 
 # Abberviations
 
