@@ -13,13 +13,14 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "github.copilot.enable": {
-    "*": false,
+    "*": true,
     "plaintext": false,
     "markdown": true,
     "scminput": false,
     "python": false,
     "vue": true,
-    "astro": true
+    "astro": true,
+    "javascript": true
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -35,14 +36,13 @@
   },
   "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim_vs/init.lua",
   "[java]": {
-    "editor.defaultFormatter": "redhat.java"
+    "editor.defaultFormatter": "xaver.clang-format"
   },
   "gitlens.launchpad.indicator.enabled": false,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "github.copilot.editor.enableAutoCompletions": true,
-  "workbench.sideBar.location": "right",
   "[dockercompose]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -111,7 +111,7 @@
     "editor.defaultFormatter": "xaver.clang-format"
   },
   "yaml.schemas": {
-    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.6.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.8.9/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "atlascode.jira.jqlList": [
     {
@@ -177,4 +177,17 @@
   "mesonbuild.downloadLanguageServer": true,
   "go.toolsManagement.autoUpdate": true,
   "workbench.iconTheme": "eq-material-theme-icons-ocean",
+  "docker.extension.enableComposeLanguageServer": false,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show"
+  ],
+  "roo-cline.deniedCommands": [],
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.location": "top"
 }

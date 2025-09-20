@@ -6,10 +6,10 @@ function fj -d "open a project in vs code"
     end
 end
 
-function cursor
-    nohup ~/AppImages/cursor.appimage $argv --no-sandbox </dev/null >/dev/null 2>&1 &
-    disown
-end
+# function cursor
+#     nohup ~/AppImages/cursor.appimage $argv --no-sandbox </dev/null >/dev/null 2>&1 &
+#     disown
+# end
 
 function egeti
     eget $argv --to=~/.eget/bin

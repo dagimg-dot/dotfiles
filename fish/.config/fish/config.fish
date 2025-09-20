@@ -33,6 +33,7 @@ set -x ZSH_CUSTOM $HOME/.oh-my-zsh/custom
 set -x ATUIN_CONFIG_DIR $HOME/dotfiles/atuin/.config/atuin
 set -Ux EDITOR nvim
 set -x PATH $PATH $HOME/.eget/bin
+set -gx PATH $PATH /usr/pgsql-15/bin
 
 # Aliases
 alias zshconfig="nvim ~/.zshrc"
@@ -77,15 +78,15 @@ alias tt='date "+%b %d %Y %H:%M"'
 alias dev="ssh jd@192.168.122.155"
 alias win="ssh admin@192.168.124.60"
 alias chx="chmod +x"
-alias grep="rg"
-alias find="fd"
 alias cb="wl-copy"
 alias fl="yazi"
+alias cursor="$HOME/.local/share/cvm/active"
 
 # Abberviations
 
 abbr ge 'git merge'
 abbr bd 'git branch -D'
+abbr gn gnome-extensions
 
 # pnpm
 set -gx PNPM_HOME "/home/jd/.local/share"

@@ -366,5 +366,18 @@
         "key": "delete",
         "command": "-notebook.cell.delete",
         "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
+        "key": "ctrl+alt+h",
+        "command": "cph.runTestCases"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "-cph.runTestCases"
+    },
+    {
+        "key": "alt+right",
+        "command": "-workbench.action.terminal.sendSequence",
+        "when": "terminalFocus"
     }
 ]
