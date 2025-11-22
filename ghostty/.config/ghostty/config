@@ -1,7 +1,7 @@
 command = tmux
 
 gtk-titlebar = false
-theme = "TokyoNight Night"
+theme = tokyo-night-default
 # font-family = SourceCode Pro
 font-family = MonaspiceNe Nerd Font
 # font-family = JetBrains Mono Nerd Font
@@ -27,4 +27,6 @@ font-feature = -liga
 # https://www.gnu.org/software/bash/manual/html_node/Commands-For-Killing.html
 # kill-line (C-k)
 keybind = ctrl+delete=esc:d
+
+quit-after-last-window-closed = false
 

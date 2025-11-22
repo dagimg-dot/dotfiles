@@ -111,7 +111,7 @@
     "editor.defaultFormatter": "xaver.clang-format"
   },
   "yaml.schemas": {
-    "file:///home/jd/.vscode/extensions/atlassian.atlascode-3.8.9/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///home/jd/.vscode/extensions/atlassian.atlascode-4.0.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "atlascode.jira.jqlList": [
     {
