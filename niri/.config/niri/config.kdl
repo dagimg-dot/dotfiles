@@ -1,0 +1,388 @@
+// This config is in the KDL format: https://kdl.dev
+// "/-" comments out the following node.
+// Check the wiki for a full description of the configuration:
+// https://yalter.github.io/niri/Configuration:-Introduction
+
+// Input device configuration.
+// Find the full list of options on the wiki:
+// https://yalter.github.io/niri/Configuration:-Input
+input {
+    keyboard {
+        xkb {
+        }
+
+        // Enable numlock on startup, omitting this setting disables it.
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        accel-speed 0.2
+        accel-profile "flat"
+    }
+
+    mouse {
+    }
+
+    trackpoint {
+    }
+
+    workspace-auto-back-and-forth
+}
+
+output "eDP-1" {
+    mode "1920x1080@60.038"
+    scale 1
+    position x=0 y=0
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080@100.000"
+    scale 1
+    position x=0 y=-1080
+}
+
+// You can configure outputs by their name, which you can find
+// by running `niri msg outputs` while inside a niri instance.
+// The built-in laptop monitor is usually called "eDP-
+// Find more information on the wiki:
+// https://yalter.github.io/niri/Configuration:-Outputs
+// Remember to uncomment the node by removing "/-"!
+layout {
+    gaps 4
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+    focus-ring {
+        width 2
+
+        active-color "#a6adc8"
+
+        inactive-color "#505050"
+    }
+
+    border {
+        off
+
+        width 4
+        active-color "#ffc87f"
+        inactive-color "#505050"
+
+        urgent-color "#9b0000"
+    }
+
+    shadow {
+        softness 30
+
+        spread 5
+
+        offset x=0 y=5
+
+        color "#0007"
+    }
+
+    struts {
+    }
+}
+
+spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-sh-at-startup "niri-float-sticky -title 'Picture in picture'"
+spawn-sh-at-startup "$HOME/scripts/niri-global-media-watcher.sh"
+spawn-sh-at-startup "niriusd"
+spawn-at-startup "systemctl" "--user" "import-environment" "NIRI_SOCKET" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
+
+layer-rule {
+  match namespace="noctalia"
+
+  background-effect {
+    blur false
+  }
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    slowdown 0.8
+}
+
+window-rule {
+    geometry-corner-radius 2
+    clip-to-geometry true
+}
+
+
+window-rule {
+    match app-id="org.telegram.desktop"
+    default-column-width {
+        proportion 0.23
+    }
+}
+
+window-rule {
+    match app-id="com.dagimg.noty"
+    default-column-width {
+        proportion 0.3
+    }
+}
+
+window-rule {
+    match title="Vicinae Settings"
+    draw-border-with-background false
+
+    background-effect {
+      blur true
+      xray false
+    }
+}
+
+layer-rule {
+    match namespace="vicinae"
+
+    background-effect {
+      blur true
+      xray false
+    }
+}
+
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+
+    background-effect {
+      blur true
+      xray false
+    }
+}
+
+window-rule {
+    match app-id="^org.telegram.desktop$" title="^Media viewer$"
+    default-column-width { proportion 0.850000; }
+    default-window-height { proportion 0.850000; }
+    open-fullscreen false
+    open-floating true
+}
+
+window-rule {
+  match title="^Picture in picture$"
+  open-floating true
+
+  default-window-height { fixed 240; }
+  default-column-width { fixed 416; }
+
+
+  default-floating-position x=20 y=20 relative-to="bottom-right"
+}
+
+window-rule {
+  match title="Add Download"
+  match app-id="com-abdownloadmanager-desktop-AppKt"
+
+  open-floating true
+}
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Alt+Space hotkey-overlay-title="Run Application Launcher: vicinae" { spawn "vicinae" "toggle"; }
+    Alt+Apostrophe hotkey-overlay-title="Vicinae Clipboard History" repeat=false { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
+    Mod+SemiColon hotkey-overlay-title="Vicinae Emoji Search" repeat=false { spawn "vicinae" "vicinae://extensions/vicinae/core/search-emojis"; }
+    Mod+Apostrophe hotkey-overlay-title="Vicinae Window Switcher" repeat=false { spawn "vicinae" "vicinae://extensions/vicinae/wm/switch-windows"; }
+
+    Ctrl+Alt+Escape hotkey-overlay-title="Lock Screen: noctalia-shell" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+
+    Shift+Space hotkey-overlay-title="Play/Pause active Media" { spawn-sh "$HOME/scripts/niri-global-media.sh"; }
+
+    Alt+Ctrl+1 hotkey-overlay-title="Open or Focus Nautilus" { spawn "nirius" "focus-or-spawn" "-a" "nautilus" "vicinae" "app" "launch" "org.gnome.Nautilus"; }
+
+    Alt+Ctrl+2 hotkey-overlay-title="Open or Focus Brave" { spawn "nirius" "focus-or-spawn" "-a" "brave" "brave"; }
+    Alt+Ctrl+Shift+2 hotkey-overlay-title="Brave New Window" { spawn "brave" "--new-window"; }
+
+    Alt+Ctrl+3 hotkey-overlay-title="Open or Focus Spotify" { spawn "nirius" "focus-or-spawn" "-a" "Spotify" "spotify"; }
+
+    Alt+Ctrl+4 hotkey-overlay-title="Open or Focus Cursor App" { spawn "nirius" "focus-or-spawn" "-a" "cursor" "cursor"; }
+    Alt+Ctrl+Shift+4 hotkey-overlay-title="Cursor New Window" { spawn "cursor" "--new-window"; }
+
+    Alt+Ctrl+5 hotkey-overlay-title="Open or Focus Noty" { spawn-sh "$HOME/scripts/gdbus-open.sh noty"; }
+
+    Mod+Alt+8 hotkey-overlay-title="Open or Focus Youtube Brave" { spawn "nirius" "focus-or-spawn" "-a" "brave-agimnkijcaahngcdmfeangaknmldooml-Default" "vicinae" "app" "launch" "brave-agimnkijcaahngcdmfeangaknmldooml-Default"; }
+
+    Mod+Alt+9 hotkey-overlay-title="Open or Focus Telegram" { spawn-sh "$HOME/scripts/gdbus-open.sh telegram"; }
+
+    Mod+Alt+0 hotkey-overlay-title="Open or Focus Ghostty" { spawn "nirius" "focus-or-spawn" "-a" "ghostty" "ghostty"; }
+    Mod+Return hotkey-overlay-title="Open Terminal: Ghostty" { spawn "ghostty"; }
+
+
+    Mod+Shift+J { spawn "nirius" "toggle-follow-mode"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+4%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "4%-"; }
+
+    Mod+O repeat=false { toggle-overview; }
+
+    Ctrl+Q repeat=false { close-window; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+J     { focus-column-left; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Down  { move-window-down; }
+    Mod+Ctrl+Up    { move-window-up; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+J     { move-column-left; }
+    Mod+Ctrl+K     { move-window-down; }
+    Mod+Ctrl+I     { move-window-up; }
+    Mod+Ctrl+L     { move-column-right; }
+
+    Mod+Shift+N { focus-column-first; }
+    Mod+Shift+M  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+I     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+K              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Mod+Shift+K         { move-column-to-workspace-down; }
+    Mod+Shift+I         { move-column-to-workspace-up; }
+
+    Mod+Alt+K         { move-workspace-down; }
+    Mod+Alt+I         { move-workspace-up; }
+
+    Mod+Alt+Shift+I    { move-workspace-to-monitor-up; }
+    Mod+Alt+Shift+K  { move-workspace-to-monitor-down; }
+
+    Mod+Alt+Ctrl+I { focus-monitor-up; }
+    Mod+Alt+Ctrl+K { focus-monitor-down; }
+
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+
+    // Switches focus between the current and the previous workspace.
+    Mod+Tab { focus-workspace-previous; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // Consume one window from the right to the bottom of the focused column.
+    Mod+Comma  { consume-window-into-column; }
+    // Expel the bottom window from the focused column to the right.
+    Mod+Period { expel-window-from-column; }
+
+    Mod+R { switch-preset-column-width; }
+    // Cycling through the presets in reverse order is also possible.
+    // Mod+R { switch-preset-column-width-back; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+M { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    Mod+Alt+H { expand-column-to-available-width; }
+
+    Mod+C { center-column; }
+
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    Mod+W { toggle-column-tabbed-display; }
+
+    Mod+Shift+S { screenshot; }
+    Mod+Ctrl+S { screenshot-screen; }
+    Mod+Ctrl+W { screenshot-window; }
+
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+
+    Mod+Shift+P { power-off-monitors; }
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 20
+}
+
+debug {
+	honor-xdg-activation-with-invalid-serial
+}

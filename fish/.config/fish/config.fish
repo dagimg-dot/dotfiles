@@ -32,7 +32,6 @@ set -x ANDROID_HOME ~/Android/Sdk
 set -x ZSH_CUSTOM $HOME/.oh-my-zsh/custom
 set -x ATUIN_CONFIG_DIR $HOME/dotfiles/atuin/.config/atuin
 set -Ux EDITOR nvim
-set -x PATH $PATH $HOME/.eget/bin
 set -gx PATH $PATH /usr/pgsql-15/bin
 
 # Aliases
@@ -68,7 +67,7 @@ alias f="cd -"
 alias r="cd"
 alias k="code ."
 alias l="exit"
-alias ls="eza"
+alias ls="lsd"
 alias vi="nvim"
 alias denc="$HOME/JDrive/Projects/BASH/enc.sh"
 alias dkd="docker compose down"
@@ -80,20 +79,17 @@ alias win="ssh admin@192.168.124.60"
 alias chx="chmod +x"
 alias cb="wl-copy"
 alias fl="yazi"
-alias cursor="$HOME/.local/share/cvm/active"
+alias ant="antigravity"
+alias ldd="/home/jd/JDrive/Projects/GO/lazydocker/lazydocker"
 
 # Abberviations
 
 abbr ge 'git merge'
 abbr bd 'git branch -D'
 abbr gn gnome-extensions
-
-# pnpm
-set -gx PNPM_HOME "/home/jd/.local/share"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
+abbr c. cursor .
+abbr grn 'git clean -n '
+abbr grf 'git clean -f '
 
 # deno
 set -x DENO_INSTALL "/home/jd/.deno"
@@ -109,3 +105,18 @@ bind p fish_clipboard_paste
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# ZVM
+set -gx ZVM_INSTALL "$HOME/.zvm/self"
+set -gx PATH $PATH "$HOME/.zvm/bin"
+set -gx PATH $PATH "$ZVM_INSTALL/"
+
+# pnpm
+set -gx PNPM_HOME "/home/jd/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+# opencode
+fish_add_path /home/jd/.opencode/bin
