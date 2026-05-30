@@ -16,10 +16,7 @@ input {
     }
 
     touchpad {
-        tap
         natural-scroll
-        accel-speed 0.2
-        accel-profile "flat"
     }
 
     mouse {
@@ -31,14 +28,20 @@ input {
     workspace-auto-back-and-forth
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 output "eDP-1" {
-    mode "1920x1080@60.038"
-    scale 1
+    mode "3024x1890@120"
+    scale 1.5
     position x=0 y=0
 }
 
 output "HDMI-A-1" {
-    mode "1920x1080@100.000"
+    mode "1920x1080@70.000"
     scale 1
     position x=0 y=-1080
 }
@@ -95,7 +98,6 @@ layout {
 spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-sh-at-startup "niri-float-sticky -title 'Picture in picture'"
 spawn-sh-at-startup "$HOME/scripts/niri-global-media-watcher.sh"
-spawn-sh-at-startup "niriusd"
 spawn-at-startup "systemctl" "--user" "import-environment" "NIRI_SOCKET" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 
 hotkey-overlay {
@@ -132,12 +134,19 @@ window-rule {
 window-rule {
     match app-id="org.telegram.desktop"
     default-column-width {
-        proportion 0.23
+        proportion 0.27
     }
 }
 
 window-rule {
     match app-id="com.dagimg.noty"
+    default-column-width {
+        proportion 0.3
+    }
+}
+
+window-rule {
+    match title="Google Keep"
     default-column-width {
         proportion 0.3
     }
@@ -151,6 +160,25 @@ window-rule {
       blur true
       xray false
     }
+}
+
+window-rule {
+    match app-id="kitty"
+    draw-border-with-background false
+
+    background-effect {
+      blur true
+      xray false
+    }
+}
+
+window-rule {
+    match app-id="xdg-desktop-portal-gtk" 
+
+    default-column-width { proportion 0.6; }
+    default-window-height { proportion 0.6; }
+    open-floating true
+    open-fullscreen false
 }
 
 layer-rule {
@@ -173,6 +201,7 @@ window-rule {
 
 window-rule {
     match app-id="^org.telegram.desktop$" title="^Media viewer$"
+
     default-column-width { proportion 0.850000; }
     default-window-height { proportion 0.850000; }
     open-fullscreen false
@@ -201,32 +230,52 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Alt+Space hotkey-overlay-title="Run Application Launcher: vicinae" { spawn "vicinae" "toggle"; }
-    Alt+Apostrophe hotkey-overlay-title="Vicinae Clipboard History" repeat=false { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
-    Mod+SemiColon hotkey-overlay-title="Vicinae Emoji Search" repeat=false { spawn "vicinae" "vicinae://extensions/vicinae/core/search-emojis"; }
-    Mod+Apostrophe hotkey-overlay-title="Vicinae Window Switcher" repeat=false { spawn "vicinae" "vicinae://extensions/vicinae/wm/switch-windows"; }
+    Alt+Apostrophe hotkey-overlay-title="Vicinae Clipboard History" repeat=false { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    Mod+SemiColon hotkey-overlay-title="Vicinae Emoji Search" repeat=false { spawn "vicinae" "vicinae://launch/core/search-emojis"; }
+    Mod+Apostrophe hotkey-overlay-title="Vicinae Window Switcher" repeat=false { spawn "vicinae" "vicinae://launch/wm/switch-windows"; }
 
     Ctrl+Alt+Escape hotkey-overlay-title="Lock Screen: noctalia-shell" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
 
     Shift+Space hotkey-overlay-title="Play/Pause active Media" { spawn-sh "$HOME/scripts/niri-global-media.sh"; }
 
-    Alt+Ctrl+1 hotkey-overlay-title="Open or Focus Nautilus" { spawn "nirius" "focus-or-spawn" "-a" "nautilus" "vicinae" "app" "launch" "org.gnome.Nautilus"; }
+    Alt+Ctrl+1 hotkey-overlay-title="Open or Focus Nautilus" { 
+        spawn-sh "$HOME/scripts/focus-or-spawn.sh 'org.gnome.Nautilus' 'nautilus'"; 
+    }
 
-    Alt+Ctrl+2 hotkey-overlay-title="Open or Focus Brave" { spawn "nirius" "focus-or-spawn" "-a" "brave" "brave"; }
+    Alt+Ctrl+2 hotkey-overlay-title="Open or Focus Brave" { 
+        spawn-sh "$HOME/scripts/focus-or-spawn.sh 'brave-browser' 'brave'"; 
+    }
+
+    Alt+Ctrl+3 hotkey-overlay-title="Open or Focus Spotify" { 
+        spawn-sh "$HOME/scripts/focus-or-spawn.sh 'Spotify'"; 
+    }
+
+    Alt+Ctrl+4 hotkey-overlay-title="Open or Focus Cursor App" { 
+        spawn-sh "$HOME/scripts/focus-or-spawn.sh 'cursor'"; 
+    }
+
+    Mod+Alt+0 hotkey-overlay-title="Open or Focus Kitty" { 
+        spawn-sh "$HOME/scripts/focus-or-spawn.sh 'kitty'"; 
+    }
+
+    Mod+Alt+8 hotkey-overlay-title="Open or Focus Youtube Brave" { 
+        spawn-sh "$HOME/scripts/focus-or-spawn.sh 'brave-agimnkijcaahngcdmfeangaknmldooml-Default' 'vicinae app launch brave-agimnkijcaahngcdmfeangaknmldooml-Default'"; 
+    }
+
     Alt+Ctrl+Shift+2 hotkey-overlay-title="Brave New Window" { spawn "brave" "--new-window"; }
 
-    Alt+Ctrl+3 hotkey-overlay-title="Open or Focus Spotify" { spawn "nirius" "focus-or-spawn" "-a" "Spotify" "spotify"; }
+    Alt+Ctrl+Shift+1 hotkey-overlay-title="Nautilus New Window" { spawn "nautilus" "--new-window"; }
 
-    Alt+Ctrl+4 hotkey-overlay-title="Open or Focus Cursor App" { spawn "nirius" "focus-or-spawn" "-a" "cursor" "cursor"; }
-    Alt+Ctrl+Shift+4 hotkey-overlay-title="Cursor New Window" { spawn "cursor" "--new-window"; }
+    // Alt+Ctrl+5 hotkey-overlay-title="Open or Focus Noty" { spawn-sh "$HOME/scripts/gdbus-open.sh noty"; }
 
-    Alt+Ctrl+5 hotkey-overlay-title="Open or Focus Noty" { spawn-sh "$HOME/scripts/gdbus-open.sh noty"; }
+    Alt+Ctrl+5 hotkey-overlay-title="Open or Focus Google Keep Brave" { 
+        spawn-sh "$HOME/scripts/focus-or-spawn.sh 'brave-eilembjdkfgodjkcjnpgpaenohkicgjd-Default' 'vicinae app launch brave-eilembjdkfgodjkcjnpgpaenohkicgjd-Default'"; 
+    }
 
-    Mod+Alt+8 hotkey-overlay-title="Open or Focus Youtube Brave" { spawn "nirius" "focus-or-spawn" "-a" "brave-agimnkijcaahngcdmfeangaknmldooml-Default" "vicinae" "app" "launch" "brave-agimnkijcaahngcdmfeangaknmldooml-Default"; }
 
     Mod+Alt+9 hotkey-overlay-title="Open or Focus Telegram" { spawn-sh "$HOME/scripts/gdbus-open.sh telegram"; }
 
-    Mod+Alt+0 hotkey-overlay-title="Open or Focus Ghostty" { spawn "nirius" "focus-or-spawn" "-a" "ghostty" "ghostty"; }
-    Mod+Return hotkey-overlay-title="Open Terminal: Ghostty" { spawn "ghostty"; }
+    Mod+Return hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }
 
 
     Mod+Shift+J { spawn "nirius" "toggle-follow-mode"; }
@@ -366,7 +415,7 @@ binds {
 
     Mod+W { toggle-column-tabbed-display; }
 
-    Mod+Shift+S { screenshot; }
+    Mod+Alt+Shift+S { screenshot; }
     Mod+Ctrl+S { screenshot-screen; }
     Mod+Ctrl+W { screenshot-window; }
 
