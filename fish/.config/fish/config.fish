@@ -1,11 +1,12 @@
 set fish_cursor_insert line
 set fish_greeting
 
-# Init
+# ===== Init =====
 starship init fish | source
 atuin init fish | source
-zoxide init fish | source
-eval (ssh-agent -c) >/dev/null 2>&1
+zoxide init --cmd cd fish | source
+# SSH agent via systemd socket (one agent per session, no zombies)
+set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 fnm env --use-on-cd --shell fish | source
 
 # Enable vim mode
@@ -15,15 +16,10 @@ fish_vi_key_bindings
 source $__fish_config_dir/custom/functions.fish
 
 set -g __sdkman_custom_dir ~/.sdkman
+
+# ===== Environment Variables =====
 set -x CHROME_EXECUTABLE /var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin/com.google.Chrome
 set -x EDGE_PATH /var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin/com.google.Chrome
-set -x PATH $PATH /var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin
-set -x PATH $PATH $HOME/Apps/flutter/bin
-set -x PATH $PATH $HOME/.pub-cache/bin
-set -x PATH $PATH $HOME/.local/bin
-set -x PATH $PATH $HOME/.cargo/bin
-set -x PATH $PATH /home/jd/.spicetify
-set -x PATH $PATH (go env GOPATH)/bin
 set -x DOCKER_HOST unix:///var/run/docker.sock
 set -x XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/jd/Personal/.local/share/flatpak/exports/share"
 set -x ANDROID_SDK_HOME ~/.android
@@ -32,15 +28,33 @@ set -x ANDROID_HOME ~/Android/Sdk
 set -x ZSH_CUSTOM $HOME/.oh-my-zsh/custom
 set -x ATUIN_CONFIG_DIR $HOME/dotfiles/atuin/.config/atuin
 set -Ux EDITOR nvim
-set -gx PATH $PATH /usr/pgsql-15/bin
+set -x DENO_INSTALL "/home/jd/.deno"
+set --export BUN_INSTALL "$HOME/.bun"
+set -gx ZVM_INSTALL "$HOME/.zvm/self"
+set -gx PNPM_HOME "/home/jd/.local/share/pnpm"
 
-# Aliases
+# ===== PATH =====
+fish_add_path --append /var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin
+fish_add_path --append $HOME/Apps/flutter/bin
+fish_add_path --append $HOME/.pub-cache/bin
+fish_add_path --append $HOME/.local/bin
+fish_add_path --append $HOME/.cargo/bin
+fish_add_path --append /home/jd/.spicetify
+fish_add_path --append (go env GOPATH)/bin
+fish_add_path --append /usr/pgsql-15/bin
+fish_add_path $DENO_INSTALL/bin
+fish_add_path $BUN_INSTALL/bin
+fish_add_path --append "$HOME/.zvm/bin"
+fish_add_path --append "$ZVM_INSTALL/"
+fish_add_path "$PNPM_HOME"
+fish_add_path /home/jd/.opencode/bin
+fish_add_path "/home/jd/.local/share/fnm/node-versions/v25.9.0/installation/bin"
+
+# ===== Aliases =====
 alias zshconfig="nvim ~/.zshrc"
 alias fishconfig="nvim ~/.config/fish/config.fish"
 alias rlc='. ~/.config/fish/config.fish'
-alias d="z"
-alias lj="zi"
-#alias cd="z"
+alias lj="cdi"
 alias mk="mkdir -p"
 alias dp="rm -rf"
 alias ff="fd --type f --exclude node_modules --exclude Lib | fzf --preview 'bat --style=numbers --color=always {}' --preview-window=right:60%"
@@ -48,7 +62,6 @@ alias p="cd /home/jd/JDrive/Projects"
 alias i="cd .."
 alias j="clear -x"
 alias sl="clear"
-alias dl="yt-dlp"
 alias gs="git switch"
 alias gi="git status"
 alias gb="git branch"
@@ -65,58 +78,29 @@ alias lg="lazygit"
 alias ss="scrcpy"
 alias f="cd -"
 alias r="cd"
-alias k="code ."
 alias l="exit"
 alias ls="lsd"
 alias vi="nvim"
-alias denc="$HOME/JDrive/Projects/BASH/enc.sh"
 alias dkd="docker compose down"
 alias ld=lazydocker
 alias zz=7zz
 alias tt='date "+%b %d %Y %H:%M"'
-alias dev="ssh jd@192.168.122.155"
-alias win="ssh admin@192.168.124.60"
 alias chx="chmod +x"
 alias cb="wl-copy"
 alias fl="yazi"
 alias ant="antigravity"
-alias ldd="/home/jd/JDrive/Projects/GO/lazydocker/lazydocker"
 
-# Abberviations
-
+# ===== Abbreviations =====
 abbr ge 'git merge'
 abbr bd 'git branch -D'
 abbr gn gnome-extensions
-abbr c. cursor .
+abbr c. codium .
 abbr grn 'git clean -n '
 abbr grf 'git clean -f '
 
-# deno
-set -x DENO_INSTALL "/home/jd/.deno"
-set -x PATH $DENO_INSTALL/bin:$PATH
-
-# uv
+# ===== Completions & Bindings =====
 uv generate-shell-completion fish | source
 
 bind -M visual y fish_clipboard_copy
 bind -M normal yy fish_clipboard_copy
 bind p fish_clipboard_paste
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
-
-# ZVM
-set -gx ZVM_INSTALL "$HOME/.zvm/self"
-set -gx PATH $PATH "$HOME/.zvm/bin"
-set -gx PATH $PATH "$ZVM_INSTALL/"
-
-# pnpm
-set -gx PNPM_HOME "/home/jd/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
-
-# opencode
-fish_add_path /home/jd/.opencode/bin
