@@ -1,0 +1,39 @@
+[backdrop]
+enabled = true
+
+[notification]
+scale = 1.0
+background_opacity = 0.92
+
+[shell]
+font_family = "SF Pro Text"
+
+[shell.panel]
+transparency_mode = "glass"
+
+[bar.main]
+start  = ["wallpaper", "workspaces"]
+center = ["clock"]
+end    = ["media", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "battery", "sysmon-cpu", "sysmon-ram", "control-center", "session"]
+
+[widget.clock]
+format = "{:%I:%M %p}"
+
+[widget.control-center]
+custom_image = "~/.config/noctalia/assets/arch.svg"
+custom_image_colorize = true
+
+[widget.sysmon-cpu]
+type = "sysmon"
+stat = "cpu_usage"
+
+[widget.sysmon-ram]
+type = "sysmon"
+stat = "ram_pct"
+
+[widget.tray]
+drawer = true
+drawer_columns = 4
+
+[widget.network]
+show_label = false
