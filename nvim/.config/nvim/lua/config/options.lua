@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.opt.splitright = true
+vim.opt.equalalways = false

@@ -23,3 +23,7 @@ vim.keymap.set("n", "<M-CR>", function()
     },
   })
 end, { desc = "Find files (split)" })
+
+vim.keymap.set("n", "<leader>bd", function()
+  Snacks.bufdelete()
+end, { desc = "Delete Buffer" })
