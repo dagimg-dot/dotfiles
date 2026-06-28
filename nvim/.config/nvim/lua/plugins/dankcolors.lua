@@ -22,6 +22,8 @@ return {
 				base0F = '#886bca',
 			})
 
+			vim.cmd.colorscheme("tokyonight-night")
+
 			vim.api.nvim_set_hl(0, 'Visual', {
 				bg = '#5c6370',
 				fg = '#ffffff',
