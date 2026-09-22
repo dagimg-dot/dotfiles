@@ -9,7 +9,7 @@ endif
 
 USER_PKGS := atuin fish ghostty kitty niri noctalia nvim starship tmux vscodium
 
-.PHONY: install stow keyd restow
+.PHONY: install stow keyd restow vscodium-ext-dump vscodium-ext-install
 
 install: stow keyd
 
@@ -26,3 +26,27 @@ keyd:
 		sudo rm /etc/keyd/default.conf; \
 	fi
 	sudo stow -d . -t / keyd-$(MACHINE)
+
+# Snapshot installed extensions (id@version, sorted) into the repo
+vscodium-ext-dump:
+	codium --list-extensions --show-versions | sort > vscodium/extensions.txt
+
+# Idempotent install: vendored vsix first, then Open VSX by id@version.
+# Missing-only by default; FORCE=1 updates everything already installed.
+vscodium-ext-install:
+	@installed=$$(codium --list-extensions); \
+	while IFS= read -r line; do \
+		[ -z "$$line" ] && continue; \
+		id=$${line%@*}; \
+		if echo "$$installed" | grep -qxF "$$id"; then \
+			[ -n "$$FORCE" ] && echo "update $$line" || continue; \
+		fi; \
+		vsix=$$(ls vscodium/vsix/$$id-*.vsix 2>/dev/null | head -1); \
+		if [ -n "$$vsix" ]; then \
+			echo "install (vsix) $$id"; \
+			codium --install-extension "$$vsix" $(if $(FORCE),--force,) || exit 1; \
+		else \
+			echo "install $$line"; \
+			codium --install-extension "$$line" $(if $(FORCE),--force,) || exit 1; \
+		fi; \
+	done < vscodium/extensions.txt
