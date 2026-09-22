@@ -279,6 +279,11 @@ window-rule {
   open-floating true
 }
 
+window-rule {
+    match app-id="dev.recordly.app"
+    open-floating true
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
@@ -287,7 +292,7 @@ binds {
     Mod+SemiColon hotkey-overlay-title="Vicinae Emoji Search" repeat=false { spawn "vicinae" "vicinae://launch/core/search-emojis"; }
     Mod+Apostrophe hotkey-overlay-title="Vicinae Window Switcher" repeat=false { spawn "vicinae" "vicinae://launch/wm/switch-windows"; }
 
-    Ctrl+Alt+Escape hotkey-overlay-title="Lock Screen: noctalia-shell" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Ctrl+Alt+L hotkey-overlay-title="Lock Screen" { spawn "noctalia" "msg" "session" "lock"; }
 
     Shift+Space hotkey-overlay-title="Play/Pause active Media" { spawn-sh "$HOME/scripts/niri-global-media.sh"; }
 
@@ -302,7 +307,7 @@ binds {
     }
 
     Alt+Ctrl+3 hotkey-overlay-title="Open or Focus Spotify" { 
-        spawn "/home/jd/.local/bin/focus-or-spawn" "Spotify";
+        spawn "/home/jd/.local/bin/focus-or-spawn" "brave-pjibgclleladliembfgfagdaldikeohf-Default" "vicinae app launch brave-pjibgclleladliembfgfagdaldikeohf-Default";
     }
 
     Alt+Ctrl+4 hotkey-overlay-title="Open or Focus VSCodium App" { 
@@ -490,3 +495,4 @@ cursor {
 debug {
 	honor-xdg-activation-with-invalid-serial
 }
+
