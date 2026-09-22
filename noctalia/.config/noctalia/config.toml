@@ -1,5 +1,11 @@
+[lockscreen]
+blurred_desktop = true
+blur_intensity  = 0.6
+tint_intensity  = 0.0
+
 [backdrop]
 enabled = true
+tint_intensity = 0.0
 
 [notification]
 scale = 1.0
@@ -12,7 +18,7 @@ font_family = "SF Pro Text"
 transparency_mode = "glass"
 
 [bar.main]
-start  = ["wallpaper", "workspaces"]
+start  = ["jd/ethiopian-date:date", "wallpaper", "workspaces"]
 center = ["clock"]
 end    = ["media", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "battery", "sysmon-cpu", "sysmon-ram", "control-center", "session"]
 
@@ -26,10 +32,12 @@ custom_image_colorize = true
 [widget.sysmon-cpu]
 type = "sysmon"
 stat = "cpu_usage"
+show_value = false
 
 [widget.sysmon-ram]
 type = "sysmon"
 stat = "ram_pct"
+show_value = false
 
 [widget.tray]
 drawer = true
