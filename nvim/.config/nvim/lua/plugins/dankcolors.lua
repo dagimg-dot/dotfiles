@@ -1,79 +1,73 @@
 return {
 	{
-		"RRethy/base16-nvim",
+		"datsfilipe/vesper.nvim",
 		priority = 1000,
 		config = function()
-			require('base16-colorscheme').setup({
-				base00 = '#181825',
-				base01 = '#181825',
-				base02 = '#5c6370',
-				base03 = '#5c6370',
-				base04 = '#abb2bf',
-				base05 = '#ffffff',
-				base06 = '#ffffff',
-				base07 = '#ffffff',
-				base08 = '#e06c5f',
-				base09 = '#e06c5f',
-				base0A = '#e8c6ff',
-				base0B = '#86e08d',
-				base0C = '#956bb2',
-				base0D = '#e8c6ff',
-				base0E = '#886bca',
-				base0F = '#886bca',
-			})
+			require("vesper").setup({})
 
-			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.colorscheme("vesper")
 
-			vim.api.nvim_set_hl(0, 'Visual', {
-				bg = '#5c6370',
-				fg = '#ffffff',
-				bold = true
-			})
-			vim.api.nvim_set_hl(0, 'Statusline', {
-				bg = '#e8c6ff',
-				fg = '#181825',
-			})
-			vim.api.nvim_set_hl(0, 'LineNr', { fg = '#5c6370' })
-			vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#956bb2', bold = true })
+			-- Vesper palette accents
+			local bg = "#101010"
+			local fg = "#ffffff"
+			local orange = "#ffc799"
+			local aqua = "#99ffe4"
+			local red = "#ff8080"
+			local gray = "#a0a0a0"
+			local dim = "#505050"
+			local selection = "#2a2a2a"
 
-			vim.api.nvim_set_hl(0, 'Statement', {
-				fg = '#886bca',
-				bold = true
-			})
-			vim.api.nvim_set_hl(0, 'Keyword', { link = 'Statement' })
-			vim.api.nvim_set_hl(0, 'Repeat', { link = 'Statement' })
-			vim.api.nvim_set_hl(0, 'Conditional', { link = 'Statement' })
-
-			vim.api.nvim_set_hl(0, 'Function', {
-				fg = '#e8c6ff',
-				bold = true
-			})
-			vim.api.nvim_set_hl(0, 'Macro', {
-				fg = '#e8c6ff',
-				italic = true
-			})
-			vim.api.nvim_set_hl(0, '@function.macro', { link = 'Macro' })
-
-			vim.api.nvim_set_hl(0, 'Type', {
-				fg = '#956bb2',
+			vim.api.nvim_set_hl(0, "Visual", {
+				bg = selection,
+				fg = fg,
 				bold = true,
-				italic = true
 			})
-			vim.api.nvim_set_hl(0, 'Structure', { link = 'Type' })
+			vim.api.nvim_set_hl(0, "Statusline", {
+				bg = orange,
+				fg = bg,
+			})
+			vim.api.nvim_set_hl(0, "LineNr", { fg = dim })
+			vim.api.nvim_set_hl(0, "CursorLineNr", { fg = orange, bold = true })
 
-			vim.api.nvim_set_hl(0, 'String', {
-				fg = '#86e08d',
-				italic = true
+			vim.api.nvim_set_hl(0, "Statement", {
+				fg = orange,
+				bold = true,
+			})
+			vim.api.nvim_set_hl(0, "Keyword", { link = "Statement" })
+			vim.api.nvim_set_hl(0, "Repeat", { link = "Statement" })
+			vim.api.nvim_set_hl(0, "Conditional", { link = "Statement" })
+
+			vim.api.nvim_set_hl(0, "Function", {
+				fg = aqua,
+				bold = true,
+			})
+			vim.api.nvim_set_hl(0, "Macro", {
+				fg = aqua,
+				italic = true,
+			})
+			vim.api.nvim_set_hl(0, "@function.macro", { link = "Macro" })
+
+			vim.api.nvim_set_hl(0, "Type", {
+				fg = aqua,
+				bold = true,
+				italic = true,
+			})
+			vim.api.nvim_set_hl(0, "Structure", { link = "Type" })
+
+			vim.api.nvim_set_hl(0, "String", {
+				fg = aqua,
+				italic = true,
 			})
 
-			vim.api.nvim_set_hl(0, 'Operator', { fg = '#abb2bf' })
-			vim.api.nvim_set_hl(0, 'Delimiter', { fg = '#abb2bf' })
-			vim.api.nvim_set_hl(0, '@punctuation.bracket', { link = 'Delimiter' })
-			vim.api.nvim_set_hl(0, '@punctuation.delimiter', { link = 'Delimiter' })
+			vim.api.nvim_set_hl(0, "Error", { fg = red })
+			vim.api.nvim_set_hl(0, "Operator", { fg = gray })
+			vim.api.nvim_set_hl(0, "Delimiter", { fg = gray })
+			vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "Delimiter" })
+			vim.api.nvim_set_hl(0, "@punctuation.delimiter", { link = "Delimiter" })
 
-			vim.api.nvim_set_hl(0, 'Comment', {
-				fg = '#5c6370',
-				italic = true
+			vim.api.nvim_set_hl(0, "Comment", {
+				fg = dim,
+				italic = true,
 			})
 
 			local current_file_path = vim.fn.stdpath("config") .. "/lua/plugins/dankcolors.lua"
@@ -88,6 +82,6 @@ return {
 					end
 				end))
 			end
-		end
-	}
+		end,
+	},
 }

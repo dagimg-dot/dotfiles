@@ -14,7 +14,7 @@ require("lazy").setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { "tokyonight" } },
+  install = { colorscheme = { "vesper", "tokyonight" } },
   checker = { enabled = true, notify = false },
   performance = {
     rtp = {
