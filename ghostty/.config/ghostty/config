@@ -33,4 +33,4 @@ command = tmux
 keybind = ctrl+v=paste_from_clipboard
 
 # --- Theme ---
-theme = TokyoNight
+theme = Vesper
