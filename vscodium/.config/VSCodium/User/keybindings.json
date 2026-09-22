@@ -1,5 +1,56 @@
-// Place your key bindings in this file to override the defaults
 [
+    {
+        "key": "ctrl+u",
+        "command": "-vscode-neovim.ctrl-u",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.u && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-vscode-neovim.ctrl-d",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.d && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                {
+                    "command": "editorScroll",
+                    "args": {
+                        "to": "up",
+                        "by": "halfPage"
+                    }
+                },
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "viewPortCenter"
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "key": "ctrl+d",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                {
+                    "command": "editorScroll",
+                    "args": {
+                        "to": "down",
+                        "by": "halfPage"
+                    }
+                },
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "viewPortCenter"
+                    }
+                }
+            ]
+        }
+    },
     {
         "key": "ctrl+numpad1",
         "command": "vscode-neovim.escape",
@@ -66,7 +117,8 @@
     },
     {
         "key": "ctrl+alt+p",
-        "command": "workbench.action.navigateEditorGroups"
+        "command": "workbench.action.navigateEditorGroups",
+        "when": "editorFocus"
     },
     {
         "key": "shift+alt+j",
@@ -185,11 +237,6 @@
         "key": "ctrl+pageup",
         "command": "-workbench.action.terminal.focusPrevious",
         "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-    },
-    {
-        "key": "shift+alt+n",
-        "command": "workbench.view.scm",
-        "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
     },
     {
         "key": "ctrl+shift+g g",
@@ -379,5 +426,76 @@
         "key": "alt+right",
         "command": "-workbench.action.terminal.sendSequence",
         "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+k w",
+        "command": "workbench.action.closeAllEditors"
+    },
+    {
+        "key": "ctrl+m ctrl+w",
+        "command": "-workbench.action.closeAllEditors"
+    },
+    {
+        "key": "ctrl+k ctrl+w",
+        "command": "workbench.action.closeAllGroups"
+    },
+    {
+        "key": "ctrl+m ctrl+shift+w",
+        "command": "-workbench.action.closeAllGroups"
+    },
+    {
+        "key": "shift+alt+n",
+        "command": "workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "ctrl+k z",
+        "command": "workbench.action.toggleZenMode",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+m z",
+        "command": "-workbench.action.toggleZenMode",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+alt+s",
+        "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "alt+k w",
+        "command": "workbench.action.closeEditorsInGroup"
+    },
+    {
+        "key": "ctrl+m w",
+        "command": "-workbench.action.closeEditorsInGroup"
+    },
+    {
+        "key": "ctrl+m ctrl+h",
+        "command": "-workbench.action.output.toggleOutput",
+        "when": "workbench.panel.output.active"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-notebook.addFindMatchToSelection",
+        "when": "config.notebook.multiCursor.enabled && notebookCellEditorFocused && activeEditor == 'workbench.editor.notebook'"
+    },
+    {
+        "key": "ctrl+shift+alt+m",
+        "command": "workbench.action.maximizeAuxiliaryBar"
+    },
+    {
+        "key": "ctrl+shift+i",
+        "command": "-supermaven.addToChat"
+    },
+    {
+        "key": "ctrl+shift+alt+s",
+        "command": "workbench.action.focusAuxiliaryBar"
     }
 ]

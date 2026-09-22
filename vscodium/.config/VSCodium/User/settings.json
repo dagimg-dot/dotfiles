@@ -1,0 +1,151 @@
+{
+  "editor.minimap.enabled": false,
+  "editor.fontFamily": "'Monaspace Neon NF','Source Code Pro','JetBrains Mono', 'monospace', monospace",
+  "editor.lineNumbers": "relative",
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "files.associations": {
+    "*.css": "css"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim_vs/init.lua",
+  "[java]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "[dockercompose]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.dialogStyle": "custom",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "michelemelluso.code-beautifier"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "zenMode.hideLineNumbers": false,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "window.commandCenter": false,
+  "window.restoreFullscreen": true,
+  "zenMode.restore": false,
+  "window.experimentalControlOverlay": false,
+  "workbench.colorCustomizations": {},
+  "editor.tokenColorCustomizations": {
+    "textMateRules": []
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "i18n-ally.displayLanguage": "en",
+  "editor.fontLigatures": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "pubspec.yaml": "pubspec.lock,pubspec_overrides.yaml,.packages,.flutter-plugins,.flutter-plugins-dependencies,.metadata",
+    "*.dart": "${capture}.g.dart",
+    "Cargo.toml": "Cargo.lock",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
+  },
+  "zenMode.centerLayout": false,
+  "editor.bracketPairColorization.enabled": false,
+  "supermaven.otherWarning": false,
+  "files.autoSave": "afterDelay",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "workbench.iconTheme": "eq-material-theme-icons-ocean",
+  "docker.extension.enableComposeLanguageServer": false,
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.location": "top",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "window.customTitleBarVisibility": "windowed",
+  "advancedNewFile.exclude": {
+    "hasura": true
+  },
+  "sqlfluff.dialect": "postgres",
+  "zig.path": "/home/jd/.zvm/bin/zig",
+  "zig.zls.enabled": "on",
+  "supermaven.enable": {
+    "zig": false,
+    "*": true
+  },
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "remote.SSH.remotePlatform": {
+    "45.136.71.202": "linux",
+    "klikdev@45.136.71.202": "linux",
+    "klik-server": "linux"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
+  },
+  "terminal.integrated.fontFamily": "Monaspace Neon NF",
+  "workbench.layoutControl.enabled": false,
+  "chat.agent.enabled": false,
+  "editor.fontSize": 13,
+  "window.autoDetectColorScheme": false,
+  "terminal.integrated.copyOnSelection": true,
+  "supermaven.allowGitignore": true,
+  "workbench.colorTheme": "Borderless Tokyo Night",
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://biomejs.dev": true
+  },
+  "workbench.browser.showInTitleBar": false,
+  "continue.enableNextEdit": false,
+  "js/ts.experimental.useTsgo": true,
+  "typescript.native-preview.tsdk": "/home/jd/.local/share/fnm/node-versions/v22.12.0/installation/lib/node_modules/@typescript/native-preview/node_modules/@typescript/native-preview-linux-arm64/lib",
+  "typescript.experimental.useTsgo": false,
+  "redhat.telemetry.enabled": false,
+  "intellij.region": "africa",
+  "intellij.dataSharing": "none",
+  "window.menuBarVisibility": "compact"
+}

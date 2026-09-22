@@ -7,7 +7,7 @@ else
 MACHINE := x86
 endif
 
-USER_PKGS := atuin fish ghostty kitty niri noctalia nvim starship tmux
+USER_PKGS := atuin fish ghostty kitty niri noctalia nvim starship tmux vscodium
 
 .PHONY: install stow keyd restow
 
