@@ -1,0 +1,6 @@
+# Fish machine-local state
+fish/.config/fish/fish_variables
+
+# Tool-generated completions
+fish/.config/fish/completions/bun.fish
+fish/.config/fish/completions/fisher.fish
