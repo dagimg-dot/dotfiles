@@ -65,6 +65,8 @@ alias sl="clear"
 alias gs="git switch"
 alias gi="git status"
 alias gb="git branch"
+alias gbw="git-branch-exclude"
+alias gbd="git branch -D"
 alias gk="git checkout -b"
 alias gsp="git stash apply"
 alias gsa="git stash -u"
@@ -88,7 +90,8 @@ alias tt='date "+%b %d %Y %H:%M"'
 alias chx="chmod +x"
 alias cb="wl-copy"
 alias fl="yazi"
-alias ant="antigravity"
+alias explore='opencode ~/exploree'
+alias oc='opencode'
 
 # ===== Abbreviations =====
 abbr ge 'git merge'
