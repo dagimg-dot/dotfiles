@@ -18,6 +18,7 @@ brew "zoxide"
 # Containers
 brew "colima"
 brew "docker"
+brew "docker-buildx"
 brew "docker-compose"
 brew "lazydocker"
 

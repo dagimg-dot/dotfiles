@@ -24,10 +24,10 @@ else
 USER_PKGS := atuin fish ghostty kitty niri noctalia nvim starship tmux vscodium
 endif
 
-.PHONY: install stow keyd restow brew vscodium vscodium-ext-dump vscodium-ext-install shell
+.PHONY: install stow keyd restow brew docker vscodium vscodium-ext-dump vscodium-ext-install shell
 
 ifeq ($(OS),Darwin)
-install: brew stow vscodium vscodium-ext-install shell
+install: brew stow docker vscodium vscodium-ext-install shell
 else
 install: stow keyd
 endif
@@ -49,6 +49,15 @@ keyd:
 		sudo rm /etc/keyd/default.conf; \
 	fi
 	sudo stow -d . -t / keyd-$(MACHINE)
+
+# Docker runs on colima; point the CLI at Homebrew's compose and buildx
+# plugins, which brew installs outside the CLI's default plugin dir
+docker:
+	@mkdir -p $(HOME)/.docker/cli-plugins
+	@for p in docker-compose docker-buildx; do \
+		ln -sfn /opt/homebrew/lib/docker/cli-plugins/$$p $(HOME)/.docker/cli-plugins/$$p; \
+	done
+	@echo "linked docker-compose and docker-buildx"
 
 # Link settings and keybindings into VSCodium's macOS User dir, moving any
 # plain files there to the Trash first
