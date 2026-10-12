@@ -19,7 +19,7 @@ if command -q go
 end
 
 # --- Environment Variables ---
-set -x DOCKER_HOST unix:///var/run/docker.sock
+set -x DOCKER_HOST unix://$HOME/.colima/default/docker.sock
 set -x ANDROID_SDK_HOME ~/.android
 set -x ANDROID_AVD_HOME ~/.android/avd
 set -x ANDROID_HOME ~/Library/Android/sdk
@@ -42,9 +42,6 @@ if status is-interactive
     if test -f "$__fish_config_dir/custom/functions.fish"
         source "$__fish_config_dir/custom/functions.fish"
     end
-
-    # OrbStack integration
-    source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 end
 
 # --- Aliases ---
