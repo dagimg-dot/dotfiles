@@ -6,21 +6,8 @@ function fj -d "open a project in vs code"
     end
 end
 
-# function cursor
-#     nohup ~/AppImages/cursor.appimage $argv --no-sandbox </dev/null >/dev/null 2>&1 &
-#     disown
-# end
-
 function egeti
     eget $argv --to=~/.eget/bin
-end
-
-function jf -d "open a project in cursor"
-    p
-    set selected_directory (fd --type d --exclude node_modules --exclude Lib | fzf --exit-0)
-    if test -n "$selected_directory"
-        cursor "$selected_directory"
-    end
 end
 
 function fk -d "navigate to a directory after selecting it with fzf"
