@@ -2,7 +2,7 @@ command = /opt/homebrew/bin/fish -c "tmux"
 
 # macos-titlebar-style = hidden
 window-decoration = none
-theme = tokyo-night-default
+theme = TokyoNight
 font-family = MonaspiceAr Nerd Font
 font-size = 11
 
