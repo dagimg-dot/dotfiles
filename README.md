@@ -29,11 +29,12 @@ the `macos` branch carries the macOS versions of fish, ghostty and tmux.
 Every step can be run again safely. tmux plugins install themselves on the
 first tmux start.
 
-Docker runs on colima. Start it once with public DNS, since colima's built-in
-resolver fails on some registry hosts; the setting is saved for later starts:
+Docker runs on colima. Create the VM once; the settings are saved for later
+starts. Public DNS is needed because colima's built-in resolver fails on some
+registry hosts, and Rosetta runs amd64 images far faster than QEMU emulation:
 
 ```sh
-colima start --dns 1.1.1.1 --dns 8.8.8.8
+colima start --vm-type vz --vz-rosetta --memory 6 --dns 1.1.1.1 --dns 8.8.8.8
 ```
 
 ## Linux
