@@ -128,7 +128,7 @@
   "window.autoDetectColorScheme": false,
   "terminal.integrated.copyOnSelection": true,
   "supermaven.allowGitignore": true,
-  "workbench.colorTheme": "Vesper",
+  "workbench.colorTheme": "Borderless Tokyo Night",
   "json.schemaDownload.trustedDomains": {
     "https://schemastore.azurewebsites.net/": true,
     "https://raw.githubusercontent.com/microsoft/vscode/": true,
