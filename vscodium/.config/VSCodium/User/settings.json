@@ -1,6 +1,6 @@
 {
   "editor.minimap.enabled": false,
-  "editor.fontFamily": "'Monaspace Neon NF','Source Code Pro','JetBrains Mono', 'monospace', monospace",
+  "editor.fontFamily": "'MonaspiceNe Nerd Font','Source Code Pro','JetBrains Mono', 'monospace', monospace",
   "editor.lineNumbers": "relative",
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
@@ -104,7 +104,7 @@
     "hasura": true
   },
   "sqlfluff.dialect": "postgres",
-  "zig.path": "/home/jd/.zvm/bin/zig",
+  "zig.path": "zig",
   "zig.zls.enabled": "on",
   "supermaven.enable": {
     "zig": false,
@@ -121,7 +121,7 @@
   "[shellscript]": {
     "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
   },
-  "terminal.integrated.fontFamily": "Monaspace Neon NF",
+  "terminal.integrated.fontFamily": "MonaspiceNe Nerd Font Mono",
   "workbench.layoutControl.enabled": false,
   "chat.agent.enabled": false,
   "editor.fontSize": 13,
@@ -142,7 +142,6 @@
   "workbench.browser.showInTitleBar": false,
   "continue.enableNextEdit": false,
   "js/ts.experimental.useTsgo": true,
-  "typescript.native-preview.tsdk": "/home/jd/.local/share/fnm/node-versions/v22.12.0/installation/lib/node_modules/@typescript/native-preview/node_modules/@typescript/native-preview-linux-arm64/lib",
   "typescript.experimental.useTsgo": false,
   "redhat.telemetry.enabled": false,
   "intellij.region": "africa",
