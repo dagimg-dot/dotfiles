@@ -1,55 +1,86 @@
-set fish_cursor_insert line
-set fish_greeting
+# --- Basic Setup ---
+set -g fish_greeting ""
+set -Ux EDITOR nvim
 
-# Init
-starship init fish | source
-atuin init fish | source
-zoxide init fish | source
-eval (ssh-agent -c) >/dev/null 2>&1
-fnm env --use-on-cd --shell fish | source
+# --- Paths (Use fish_add_path instead of set -x PATH) ---
+# fish_add_path automatically handles duplicates and keeps the list clean
+fish_add_path /opt/homebrew/bin
+fish_add_path /opt/homebrew/sbin
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.eget/bin
+fish_add_path $HOME/.deno/bin
+fish_add_path $HOME/.bun/bin
+fish_add_path $HOME/Apps/flutter/bin
+fish_add_path $HOME/.pub-cache/bin
+# Go path
+if command -q go
+    fish_add_path (go env GOPATH)/bin
+end
 
-# Enable vim mode
-fish_vi_key_bindings
-
-# Custom
-source $__fish_config_dir/custom/functions.fish
-
-set -g __sdkman_custom_dir ~/.sdkman
-set -x CHROME_EXECUTABLE /var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin/com.google.Chrome
-set -x EDGE_PATH /var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin/com.google.Chrome
-set -x PATH $PATH /var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin
-set -x PATH $PATH $HOME/Apps/flutter/bin
-set -x PATH $PATH $HOME/.pub-cache/bin
-set -x PATH $PATH $HOME/.local/bin
-set -x PATH $PATH $HOME/.cargo/bin
-set -x PATH $PATH /home/jd/.spicetify
-set -x PATH $PATH (go env GOPATH)/bin
+# --- Environment Variables ---
 set -x DOCKER_HOST unix:///var/run/docker.sock
-set -x XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/jd/Personal/.local/share/flatpak/exports/share"
 set -x ANDROID_SDK_HOME ~/.android
 set -x ANDROID_AVD_HOME ~/.android/avd
-set -x ANDROID_HOME ~/Android/Sdk
-set -x ZSH_CUSTOM $HOME/.oh-my-zsh/custom
-set -x ATUIN_CONFIG_DIR $HOME/dotfiles/atuin/.config/atuin
-set -Ux EDITOR nvim
-set -x PATH $PATH $HOME/.eget/bin
-set -gx PATH $PATH /usr/pgsql-15/bin
+set -x ANDROID_HOME ~/Library/Android/sdk
+set -x ATUIN_CONFIG_DIR $HOME/.config/atuin
+set -gx PNPM_HOME "$HOME/Library/pnpm"
+fish_add_path $PNPM_HOME
 
-# Aliases
+# --- Interactive Initializations (Performance Optimized) ---
+if status is-interactive
+    # Init tools only once when shell is interactive
+    starship init fish | source
+    atuin init fish | source
+    zoxide init fish | source
+    fnm env --use-on-cd --shell fish | source
+
+    # Enable vim mode
+    fish_vi_key_bindings
+
+    # Load custom functions
+    if test -f "$__fish_config_dir/custom/functions.fish"
+        source "$__fish_config_dir/custom/functions.fish"
+    end
+
+    # OrbStack integration
+    source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+end
+
+# --- Aliases ---
 alias zshconfig="nvim ~/.zshrc"
 alias fishconfig="nvim ~/.config/fish/config.fish"
-alias rlc='. ~/.config/fish/config.fish'
+alias rlc='source ~/.config/fish/config.fish'
 alias d="z"
 alias lj="zi"
-#alias cd="z"
 alias mk="mkdir -p"
 alias dp="rm -rf"
 alias ff="fd --type f --exclude node_modules --exclude Lib | fzf --preview 'bat --style=numbers --color=always {}' --preview-window=right:60%"
-alias p="cd /home/jd/JDrive/Projects"
+alias p="cd $HOME/JDrive/Projects"
 alias i="cd .."
 alias j="clear -x"
 alias sl="clear"
 alias dl="yt-dlp"
+alias lg="lazygit"
+alias ss="scrcpy"
+alias f="cd -"
+alias r="cd"
+alias k="code ."
+alias l="exit"
+alias ls="lsd"
+alias vi="nvim"
+alias denc="$HOME/JDrive/Projects/BASH/enc.sh"
+alias dkd="docker compose down"
+alias ld="lazydocker"
+alias zz="7zz"
+alias tt='date "+%b %d %Y %H:%M"'
+alias dev="ssh jd@192.168.122.155"
+alias win="ssh admin@192.168.124.60"
+alias chx="chmod +x"
+alias cb="pbcopy"
+alias fl="yazi"
+
+# --- Git Aliases ---
 alias gs="git switch"
 alias gi="git status"
 alias gb="git branch"
@@ -62,50 +93,23 @@ alias gss="git stash push -m"
 alias gm="git commit -m"
 alias gp="git push"
 alias gl="git pull"
-alias lg="lazygit"
-alias ss="scrcpy"
-alias f="cd -"
-alias r="cd"
-alias k="code ."
-alias l="exit"
-alias ls="eza"
-alias vi="nvim"
-alias denc="$HOME/JDrive/Projects/BASH/enc.sh"
-alias dkd="docker compose down"
-alias ld=lazydocker
-alias zz=7zz
-alias tt='date "+%b %d %Y %H:%M"'
-alias dev="ssh jd@192.168.122.155"
-alias win="ssh admin@192.168.124.60"
-alias chx="chmod +x"
-alias cb="wl-copy"
-alias fl="yazi"
-alias cursor="$HOME/.local/share/cvm/active"
 
-# Abberviations
+# --- Abbreviations ---
+abbr -a ge 'git merge'
+abbr -a bd 'git branch -D'
+abbr -a gn gnome-extensions
 
-abbr ge 'git merge'
-abbr bd 'git branch -D'
-abbr gn gnome-extensions
-
-# pnpm
-set -gx PNPM_HOME "/home/jd/.local/share"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
-
-# deno
-set -x DENO_INSTALL "/home/jd/.deno"
-set -x PATH $DENO_INSTALL/bin:$PATH
-
-# uv
-uv generate-shell-completion fish | source
-
+# --- Vim Mode Binds ---
 bind -M visual y fish_clipboard_copy
 bind -M normal yy fish_clipboard_copy
 bind p fish_clipboard_paste
 
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+# opencode
+fish_add_path /Users/jd/.opencode/bin
+
+# ZVM
+set -gx ZVM_INSTALL "$HOME/.zvm/self"
+if test -d "$ZVM_INSTALL"
+    set -gx PATH $PATH "$HOME/.zvm/bin"
+    set -gx PATH $PATH "$ZVM_INSTALL"
+end
